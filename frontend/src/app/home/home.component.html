@@ -1,0 +1,10 @@
+<h1 *ngIf="currentUser">Hi! {{ currentUser.firstName }}</h1>
+<p>You're logged in!</p>
+<hr />
+<div
+	*ngFor="let mission of missions"
+	routerLink="{{ '/mission/' + mission.id }}"
+>
+	<h2>{{ mission.location }}</h2>
+	<p>{{ mission.id }}</p>
+</div>
