@@ -13,13 +13,7 @@ import { AmplifyUIAngularModule } from '@aws-amplify/ui-angular';
 import Amplify, { Auth } from 'aws-amplify';
 import awsconfig from './aws-exports';
 
-Amplify.configure({
-  aws_project_region: 'us-east-1',
-  aws_cognito_region: 'us-east-1',
-  aws_user_pools_id: 'us-east-1_ods9jpAIR',
-  aws_user_pools_web_client_id: '7jdh37dljq5oehhn47l56r2m98',
-  oauth: {},
-});
+Amplify.configure(awsconfig);
 
 @NgModule({
   declarations: [
@@ -29,7 +23,7 @@ Amplify.configure({
     LoginComponent,
     MissionComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
+  imports: [AmplifyUIAngularModule, BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
