@@ -17,6 +17,9 @@ import { DoorComponent } from './door/door.component';
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> commented amplify bug
 Amplify.configure({
   aws_project_region: 'us-east-1',
   aws_cognito_region: 'us-east-1',
@@ -33,9 +36,12 @@ Amplify.configure({
 //   "oauth": {}
 // });
 >>>>>>> commented amplify bug
+<<<<<<< HEAD
 =======
 Amplify.configure(awsconfig);
 >>>>>>> testing build
+=======
+>>>>>>> commented amplify bug
 
 @NgModule({
   declarations: [
