@@ -16,6 +16,7 @@ import { MapComponent } from './map/map.component';
 import { DoorComponent } from './door/door.component';
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 Amplify.configure({
   aws_project_region: 'us-east-1',
   aws_cognito_region: 'us-east-1',
@@ -32,6 +33,9 @@ Amplify.configure({
 //   "oauth": {}
 // });
 >>>>>>> commented amplify bug
+=======
+Amplify.configure(awsconfig);
+>>>>>>> testing build
 
 @NgModule({
   declarations: [
@@ -50,6 +54,10 @@ Amplify.configure({
     HttpClientModule,
     HttpClientJsonpModule,
   ],
+<<<<<<< HEAD
+=======
+  imports: [AmplifyUIAngularModule, BrowserModule, AppRoutingModule, ReactiveFormsModule],
+>>>>>>> testing build
   providers: [],
   bootstrap: [AppComponent],
 })
