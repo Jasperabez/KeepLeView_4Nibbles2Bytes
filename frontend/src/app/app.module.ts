@@ -9,8 +9,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { MissionComponent } from './mission/mission.component';
 
-import { AmplifyUIAngularModule } from '@aws-amplify/ui-angular';
-import Amplify, { Auth } from 'aws-amplify';
+import Amplify from 'aws-amplify';
 import awsconfig from './aws-exports';
 
 Amplify.configure(awsconfig);
@@ -23,7 +22,7 @@ Amplify.configure(awsconfig);
     LoginComponent,
     MissionComponent,
   ],
-  imports: [AmplifyUIAngularModule, BrowserModule, AppRoutingModule, ReactiveFormsModule],
+  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
