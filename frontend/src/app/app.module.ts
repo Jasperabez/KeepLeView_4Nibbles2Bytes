@@ -10,7 +10,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { QuestComponent } from './quest/quest.component';
 
-import Amplify, { Auth } from 'aws-amplify';
+import Amplify from 'aws-amplify';
 import awsconfig from './aws-exports';
 import { MapComponent } from './map/map.component';
 import { DoorComponent } from './door/door.component';
@@ -47,6 +47,7 @@ Amplify.configure(awsconfig);
     MapComponent,
     DoorComponent,
   ],
+<<<<<<< HEAD
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -58,6 +59,9 @@ Amplify.configure(awsconfig);
 =======
   imports: [AmplifyUIAngularModule, BrowserModule, AppRoutingModule, ReactiveFormsModule],
 >>>>>>> testing build
+=======
+  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
+>>>>>>> clean up build testing files
   providers: [],
   bootstrap: [AppComponent],
 })
