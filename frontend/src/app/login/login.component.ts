@@ -11,7 +11,7 @@ import { AuthenticationService } from '@/services';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  loading = false;
+  isLoading = false;
   submitted = false;
   returnUrl: string;
 
@@ -37,15 +37,16 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    this.loading = true;
+    this.isLoading = true;
 
-    const isAuthenticated = this.authenticationService.login(
-      this.f.username.value,
-      this.f.password.value
-    );
-
-    if (isAuthenticated) {
-      this.router.navigate([this.returnUrl]);
-    }
+    this.authenticationService
+      .login(this.f.username.value, this.f.password.value)
+      .then((isAuthenticated) => {
+        if (isAuthenticated) {
+          this.router.navigate([this.returnUrl]);
+        } else {
+          this.isLoading = false;
+        }
+      });
   }
 }

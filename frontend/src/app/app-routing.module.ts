@@ -8,8 +8,8 @@ import { MissionComponent } from './mission/mission.component';
 import { AuthGuard } from './helpers';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, canActivate: [] },
-  // { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  // { path: '', component: HomeComponent, canActivate: [] },
+  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'mission/:id', component: MissionComponent },
