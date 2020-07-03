@@ -13,7 +13,7 @@ import { AmplifyUIAngularModule } from '@aws-amplify/ui-angular';
 import Amplify, { Auth } from 'aws-amplify';
 import awsconfig from './aws-exports';
 
-// Amplify.configure(awsconfig);
+Amplify.configure(awsconfig);
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, RegisterComponent, LoginComponent, MissionComponent],
