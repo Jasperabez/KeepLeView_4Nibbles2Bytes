@@ -4,4 +4,6 @@ export class Mission {
   volunteerId: string;
   location: string;
   isTaken: boolean;
+  lat: number;
+  lng: number;
 }

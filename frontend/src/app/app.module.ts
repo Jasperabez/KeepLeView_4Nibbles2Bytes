@@ -12,6 +12,7 @@ import { MissionComponent } from './mission/mission.component';
 import { AmplifyUIAngularModule } from '@aws-amplify/ui-angular';
 import Amplify, { Auth } from 'aws-amplify';
 import awsconfig from './aws-exports';
+import { MapComponent } from './map/map.component';
 
 Amplify.configure({
   aws_project_region: 'us-east-1',
@@ -28,6 +29,7 @@ Amplify.configure({
     RegisterComponent,
     LoginComponent,
     MissionComponent,
+    MapComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
