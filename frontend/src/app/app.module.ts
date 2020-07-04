@@ -13,6 +13,7 @@ import { AmplifyUIAngularModule } from '@aws-amplify/ui-angular';
 import Amplify, { Auth } from 'aws-amplify';
 import awsconfig from './aws-exports';
 import { MapComponent } from './map/map.component';
+import { DoorComponent } from './door/door.component';
 
 Amplify.configure({
   aws_project_region: 'us-east-1',
@@ -30,6 +31,7 @@ Amplify.configure({
     LoginComponent,
     MissionComponent,
     MapComponent,
+    DoorComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
