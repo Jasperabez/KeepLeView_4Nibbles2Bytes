@@ -11,15 +11,9 @@
   padding: 8px;
   margin: 0;
   font-size: 1.2rem;
-  color: grey;
-}
-
-.menu-btn--active {
   color: black;
 }
 
-.menu-icon {
-  width: 24px;
-  height: 24px;
-  padding: 8px;
+.acceptBtn {
+  z-index: 5;
 }

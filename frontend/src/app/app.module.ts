@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
-import { MissionComponent } from './mission/mission.component';
+import { QuestComponent } from './quest/quest.component';
 
 import { AmplifyUIAngularModule } from '@aws-amplify/ui-angular';
 import Amplify, { Auth } from 'aws-amplify';
@@ -29,7 +29,7 @@ Amplify.configure({
     HomeComponent,
     RegisterComponent,
     LoginComponent,
-    MissionComponent,
+    QuestComponent,
     MapComponent,
     DoorComponent,
   ],

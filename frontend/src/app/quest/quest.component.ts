@@ -2,27 +2,27 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { MissionService } from '@/services';
+import { QuestService } from '@/services';
 
-import { Mission } from '@/models';
+import { Quest } from '@/models';
 
 @Component({
   selector: 'app-mission',
-  templateUrl: './mission.component.html',
-  styleUrls: ['./mission.component.scss'],
+  templateUrl: './quest.component.html',
+  styleUrls: ['./quest.component.scss'],
 })
-export class MissionComponent implements OnInit {
+export class QuestComponent implements OnInit {
   id: string;
-  mission: Mission;
+  quest: Quest;
   constructor(
     private router: ActivatedRoute,
-    private missionService: MissionService,
+    private questService: QuestService,
     private location: Location
   ) {}
 
   ngOnInit(): void {
     this.id = this.router.snapshot.params.id;
-    this.mission = this.missionService.getById(this.id);
+    this.quest = this.questService.getById(this.id);
   }
 
   goBack(): void {
@@ -30,6 +30,6 @@ export class MissionComponent implements OnInit {
   }
 
   acceptMission(id: string): void {
-    this.missionService.acceptMission(id);
+    this.questService.acceptMission(id);
   }
 }

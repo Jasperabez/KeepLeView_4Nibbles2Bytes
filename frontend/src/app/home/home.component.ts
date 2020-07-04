@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '@/models';
 
-import { AuthenticationService, MissionService } from '@/services';
+import { AuthenticationService, QuestService } from '@/services';
 
 @Component({
   selector: 'app-home',
@@ -14,13 +14,13 @@ export class HomeComponent implements OnInit {
   currentUser: User;
   constructor(
     private authenticationService: AuthenticationService,
-    private missionService: MissionService,
+    private questService: QuestService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
     this.currentUser = this.authenticationService.currentUser;
-    this.missions = this.missionService.getAll();
+    this.missions = this.questService.getAll();
   }
 
   onSignOut(): void {

@@ -1,4 +1,4 @@
-const mockMissions = [
+const mockQuests = [
   {
     id: '123123',
     beneficiariesId: '123123',
@@ -37,4 +37,4 @@ const mockMissions = [
   },
 ];
 
-export { mockMissions };
+export { mockQuests };

@@ -1,0 +1,21 @@
+<div class="menu">
+	<p class="menu-btn" (click)="goBack()">
+		Back
+	</p>
+	<div class="spacer"></div>
+	<p class="menu-btn">Accept</p>
+</div>
+<hr />
+<div *ngIf="quest">
+	<app-map [lat]="quest.lat" [lng]="quest.lng"></app-map>
+	<h3>{{ quest.location }}</h3>
+	<p>Beneficiaries id: {{ quest.beneficiariesId }}</p>
+	<p>Volunteer id: {{ quest.volunteerId }}</p>
+	<button
+		[disabled]="quest.isTaken"
+		(click)="acceptMission(quest.id)"
+		class="acceptBtn"
+	>
+		Accept
+	</button>
+</div>

@@ -1,4 +1,4 @@
-export class Mission {
+export class Quest {
   id: string;
   beneficiariesId: string;
   volunteerId: string;

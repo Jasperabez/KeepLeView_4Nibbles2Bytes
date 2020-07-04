@@ -1,12 +1,22 @@
-<h1 *ngIf="currentUser">Hi! {{ currentUser.firstName }}</h1>
-<p>You're logged in!</p>
-<button (click)="onSignOut()">Sign Out</button>
-<hr />
-<div
-	*ngFor="let mission of missions"
-	routerLink="{{ '/mission/' + mission.id }}"
->
-	<h2>{{ mission.location }}</h2>
-	<p>{{ mission.id }}</p>
+<div class="menu">
+	<p
+		class="menu-btn"
+		routerLink="/quests"
+		routerLinkActive="menu-btn--active"
+	>
+		Quest List
+	</p>
+	<p class="menu-btn" routerLink="/myQuest">Current Quest</p>
+	<div class="spacer"></div>
+	<img
+		class="menu-icon"
+		routerLink="/settings"
+		src="assets/common/gear.png"
+		alt=""
+	/>
 </div>
-t
+<hr />
+<div *ngFor="let quest of missions" routerLink="{{ '/quests/' + quest.id }}">
+	<h2>{{ quest.location }}</h2>
+	<p>{{ quest.id }}</p>
+</div>
