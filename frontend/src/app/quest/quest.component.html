@@ -8,12 +8,13 @@
 <hr />
 <div *ngIf="quest">
 	<app-map [lat]="quest.lat" [lng]="quest.lng"></app-map>
-	<h3>{{ quest.location }}</h3>
-	<p>Beneficiaries id: {{ quest.beneficiariesId }}</p>
-	<p>Volunteer id: {{ quest.volunteerId }}</p>
+	<h3>{{ quest.ConciseLocation }}</h3>
+	<p>Request Time: {{ quest.RequestUnixTime | date }}</p>
+	<p>Beneficiaries id: {{ quest.BeneficiaryId }}</p>
+	<p>Food: {{ quest.FoodName }}</p>
 	<button
-		[disabled]="quest.isTaken"
-		(click)="acceptMission(quest.id)"
+		[disabled]="quest.IsTaken"
+		(click)="acceptMission(quest.MissionId)"
 		class="acceptBtn"
 	>
 		Accept

@@ -10,7 +10,7 @@ import { AuthenticationService, QuestService } from '@/services';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  missions = [];
+  quests = [];
   currentUser: User;
   constructor(
     private authenticationService: AuthenticationService,
@@ -20,7 +20,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.authenticationService.currentUser;
-    this.missions = this.questService.getAll();
+    this.questService.getAll().subscribe((questList) => {
+      console.log(questList);
+      this.quests = questList;
+    });
   }
 
   onSignOut(): void {

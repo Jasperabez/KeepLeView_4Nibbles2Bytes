@@ -1,9 +1,12 @@
 export class Quest {
-  id: string;
-  beneficiariesId: string;
-  volunteerId: string;
-  location: string;
-  isTaken: boolean;
   lat: number;
   lng: number;
+  FoodName: string;
+  ConciseLocation: string;
+  BeneficiaryId: string;
+  MissionId: string;
+  IsCompleted: boolean;
+  MissionType: string;
+  IsTaken: boolean;
+  RequestUnixTime: string;
 }

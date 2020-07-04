@@ -1,6 +1,12 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
 
 import { mockQuests } from '@/helpers';
+import { Quest } from '@/models';
+
+const apiUrl = 'https://1bdbj7hjli.execute-api.us-east-1.amazonaws.com/dev/';
 
 @Injectable({
   providedIn: 'root',
@@ -8,16 +14,18 @@ import { mockQuests } from '@/helpers';
 export class QuestService {
   quests = [];
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.quests = mockQuests;
   }
 
   getById(id: string) {
-    return this.quests.filter((quest) => quest.id === id)[0];
+    const getByIdUrl = `${apiUrl}mission/${id}?formatting=detailed`;
+    return this.http.get<Quest>(getByIdUrl);
   }
 
   getAll() {
-    return this.quests;
+    const getAllUrl = apiUrl + 'mission/allNotTaken';
+    return this.http.get<Quest[]>(getAllUrl);
   }
 
   acceptMission(id: string) {

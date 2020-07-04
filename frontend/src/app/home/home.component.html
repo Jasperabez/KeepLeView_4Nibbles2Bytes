@@ -16,7 +16,10 @@
 	/>
 </div>
 <hr />
-<div *ngFor="let quest of missions" routerLink="{{ '/quests/' + quest.id }}">
-	<h2>{{ quest.location }}</h2>
-	<p>{{ quest.id }}</p>
+<div
+	*ngFor="let quest of quests"
+	routerLink="{{ '/quests/' + quest.MissionId }}"
+>
+	<h2>{{ quest.ConciseLocation }}</h2>
+	<p>{{ quest.MissionType }}</p>
 </div>

@@ -22,7 +22,10 @@ export class QuestComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.router.snapshot.params.id;
-    this.quest = this.questService.getById(this.id);
+    this.questService.getById(this.id).subscribe((quest) => {
+      console.log(quest);
+      this.quest = quest[0];
+    });
   }
 
   goBack(): void {
