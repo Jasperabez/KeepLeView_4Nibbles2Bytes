@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 
 import { Auth } from 'aws-amplify';
 
-import { UserService } from '@/services';
-
 import { User } from '@/models';
 
 @Injectable({
@@ -12,7 +10,7 @@ import { User } from '@/models';
 export class AuthenticationService {
   currentUser: User;
 
-  constructor(private userService: UserService) {}
+  constructor() {}
 
   async login(username: string, password: string): Promise<boolean> {
     try {

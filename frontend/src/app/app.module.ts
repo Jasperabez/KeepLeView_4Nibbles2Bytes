@@ -9,7 +9,6 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { QuestComponent } from './quest/quest.component';
 
-import { AmplifyUIAngularModule } from '@aws-amplify/ui-angular';
 import Amplify, { Auth } from 'aws-amplify';
 import awsconfig from './aws-exports';
 import { MapComponent } from './map/map.component';
