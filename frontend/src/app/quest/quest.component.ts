@@ -22,11 +22,7 @@ export class QuestComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.router.snapshot.params.id;
-    this.questService.getById(this.id).subscribe((quest) => {
-      console.log(quest);
-      quest[0].RequestUnixTime = parseInt(quest[0].RequestUnixTime, 10);
-      this.quest = quest[0];
-    });
+    this.quest = this.questService.getById(this.id);
   }
 
   goBack(): void {
