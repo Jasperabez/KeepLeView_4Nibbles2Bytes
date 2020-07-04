@@ -10,7 +10,11 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { QuestComponent } from './quest/quest.component';
 
+<<<<<<< HEAD
 import Amplify from 'aws-amplify';
+=======
+import Amplify, { Auth } from 'aws-amplify';
+>>>>>>> Removed users service
 import awsconfig from './aws-exports';
 import { MapComponent } from './map/map.component';
 import { DoorComponent } from './door/door.component';
