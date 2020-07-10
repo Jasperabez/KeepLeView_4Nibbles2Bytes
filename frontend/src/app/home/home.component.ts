@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from '@/models';
 
-import { AuthenticationService, UserService, MissionService } from '@/services';
+import { AuthenticationService, QuestService } from '@/services';
 
 @Component({
   selector: 'app-home',
@@ -9,18 +10,26 @@ import { AuthenticationService, UserService, MissionService } from '@/services';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  users = [];
-  missions = [];
+  quests = [];
   currentUser: User;
   constructor(
     private authenticationService: AuthenticationService,
-    private userService: UserService,
-    private missionService: MissionService
+    private questService: QuestService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.currentUser = this.authenticationService.currentUser;
-    this.users = this.userService.getAll();
-    this.missions = this.missionService.getAll();
+    this.questService.getAll().subscribe((quests) => {
+      this.quests = quests;
+    });
+  }
+
+  onSignOut(): void {
+    this.authenticationService.signOut().then((isSignOut) => {
+      if (isSignOut) {
+        this.router.navigate(['/']);
+      }
+    });
   }
 }

@@ -1,0 +1,20 @@
+<div class="menuSelector">
+	<div
+		class="menuButton"
+		routerLinkActive="menuButton--active"
+		routerLink="/door/login"
+	>
+		Sign In
+	</div>
+	<div
+		class="menuButton"
+		routerLinkActive="menuButton--active"
+		routerLink="/door/register"
+	>
+		Sign Up
+	</div>
+</div>
+<app-register
+	*ngIf="router.snapshot.params.state === 'register'"
+></app-register>
+<app-login *ngIf="router.snapshot.params.state === 'login'"></app-login>
