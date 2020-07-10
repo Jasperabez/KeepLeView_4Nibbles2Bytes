@@ -8,5 +8,5 @@ export class Quest {
   IsCompleted: boolean;
   MissionType: string;
   IsTaken: boolean;
-  RequestUnixTime: string;
+  RequestUnixTime: number;
 }
