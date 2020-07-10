@@ -30,6 +30,11 @@ export class QuestService {
     return quest;
   }
 
+  async getByVolunteerId(id: string) {
+    const getByIdUrl = `${apiUrl}mission/${id}?formatting=detailed`;
+    return await this.http.get<Quest[]>(getByIdUrl).toPromise();
+  }
+
   getAll() {
     const getAllUrl = `${apiUrl}mission/allNotTaken`;
     return this.http.get<Quest[]>(getAllUrl);

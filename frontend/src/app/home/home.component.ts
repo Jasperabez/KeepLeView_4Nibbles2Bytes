@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '@/models';
 
 import { AuthenticationService, QuestService } from '@/services';
@@ -11,22 +11,41 @@ import { AuthenticationService, QuestService } from '@/services';
 })
 export class HomeComponent implements OnInit {
   quests = [];
-  currentUser: User;
+  userId: string;
+
+  isLoading: boolean;
+
   constructor(
-    private authenticationService: AuthenticationService,
+    private authService: AuthenticationService,
     private questService: QuestService,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.currentUser = this.authenticationService.currentUser;
-    this.questService.getAll().subscribe((quests) => {
-      this.quests = quests;
+    this.userId = this.authService.getId();
+    this.getQuestsByActivatedRoute();
+  }
+
+  public getQuestsByActivatedRoute() {
+    this.activatedRoute.params.subscribe((route) => {
+      this.isLoading = true;
+      if (route.state === 'my-quest') {
+        this.questService.getByVolunteerId(this.userId).then((quests) => {
+          this.quests = quests;
+          this.isLoading = false;
+        });
+      } else {
+        this.questService.getAll().subscribe((quests) => {
+          this.quests = quests;
+          this.isLoading = false;
+        });
+      }
     });
   }
 
   onSignOut(): void {
-    this.authenticationService.signOut().then((isSignOut) => {
+    this.authService.signOut().then((isSignOut) => {
       if (isSignOut) {
         this.router.navigate(['/']);
       }

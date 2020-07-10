@@ -14,6 +14,7 @@ import Amplify from 'aws-amplify';
 import awsconfig from './aws-exports';
 import { MapComponent } from './map/map.component';
 import { DoorComponent } from './door/door.component';
+import { MyQuestComponent } from './my-quest/my-quest.component';
 
 Amplify.configure({
   aws_project_region: 'us-east-1',
@@ -32,6 +33,7 @@ Amplify.configure({
     QuestComponent,
     MapComponent,
     DoorComponent,
+    MyQuestComponent,
   ],
   imports: [
     BrowserModule,
