@@ -5,15 +5,21 @@
 
   display: grid;
   grid-template-columns: 1fr 1fr;
+
+  @media (max-width: 720px) {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .logoHolder {
-  flex: 1 1;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 32px;
   background-color: rgba(35, 95, 255, 0.2);
+
+  flex: 1 1;
 
   .logo {
     width: 100%;
@@ -21,14 +27,34 @@
     padding: 32px;
     box-sizing: border-box;
   }
+
+  @media (max-width: 720px) {
+    flex: 0 1;
+    background-color: transparent;
+    margin: 0px;
+
+    margin-bottom: -16px;
+
+    .logo {
+      height: 120px;
+      width: auto;
+      padding: 0;
+      box-sizing: border-box;
+    }
+  }
 }
 
 .mainHolder {
-  flex: 1 1;
   padding: 32px;
   box-sizing: border-box;
 
+  flex: 1 1;
   position: relative;
+  overflow: hidden;
+
+  @media (max-width: 720px) {
+    padding: 16px;
+  }
 }
 
 .background {

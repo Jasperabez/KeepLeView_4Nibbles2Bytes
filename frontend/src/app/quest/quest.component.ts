@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { QuestService, UserService } from '@/services';
+import { QuestService, AuthenticationService } from '@/services';
 
 import { Quest } from '@/models';
 
@@ -12,18 +12,23 @@ import { Quest } from '@/models';
   styleUrls: ['./quest.component.scss'],
 })
 export class QuestComponent implements OnInit {
-  id: string;
+  questId: string;
+  userId: string;
   quest: Quest;
+  isLoading = true;
   constructor(
     private router: ActivatedRoute,
     private questService: QuestService,
-    private location: Location
+    private location: Location,
+    private authService: AuthenticationService
   ) {}
 
   ngOnInit(): void {
-    this.id = this.router.snapshot.params.id;
-    this.questService.getById(this.id).then((quest) => {
+    this.questId = this.router.snapshot.params.id;
+    this.userId = this.authService.getId();
+    this.questService.getById(this.questId).then((quest) => {
       this.quest = quest;
+      this.isLoading = false;
     });
   }
 
@@ -32,8 +37,18 @@ export class QuestComponent implements OnInit {
   }
 
   acceptMission(id: string): void {
+    this.isLoading = true;
     this.questService.acceptMission(id).subscribe((response) => {
       console.log(response);
+      this.isLoading = false;
+    });
+  }
+
+  completeMission(id: string): void {
+    this.isLoading = true;
+    this.questService.completeMission(id).subscribe((response) => {
+      console.log(response);
+      this.isLoading = false;
     });
   }
 }

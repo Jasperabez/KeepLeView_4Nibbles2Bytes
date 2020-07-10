@@ -48,4 +48,13 @@ export class QuestService {
       PatchType: 'AcceptMission',
     });
   }
+
+  completeMission(missionId: string) {
+    const acceptMissionUrl = `${apiUrl}mission/${missionId}`;
+
+    return this.http.patch(acceptMissionUrl, {
+      VolunteerId: this.authService.getId(),
+      PatchType: 'CompleteMission',
+    });
+  }
 }

@@ -1,44 +1,38 @@
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.spacer {
-  flex: 1 1;
-}
-
-.loading {
-  position: absolute;
-  border: 6px solid #f3f3f3; /* Light grey */
-  border-top: 6px solid #3498db; /* Blue */
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 2s linear infinite;
-}
-
-.menu {
+.main {
+  width: 100%;
+  height: 100%;
   display: flex;
-  align-items: center;
-}
+  flex-direction: column;
 
-.menu-btn {
-  padding: 8px;
-  margin: 0;
-  font-size: 1.2rem;
-  color: grey;
-}
+  overflow: hidden;
 
-.menu-btn--active {
-  color: black;
-}
+  .menuHolder {
+    flex: 0 0;
+    .menu {
+      display: flex;
+      align-items: center;
+    }
 
-.menu-icon {
-  width: 24px;
-  height: 24px;
-  padding: 8px;
+    .menu-btn {
+      padding: 8px;
+      margin: 0;
+      font-size: 1.2rem;
+      color: grey;
+    }
+
+    .menu-btn--active {
+      color: black;
+    }
+
+    .menu-icon {
+      width: 24px;
+      height: 24px;
+      padding: 8px;
+    }
+  }
+
+  .questHolder {
+    flex: 1 1;
+    overflow-y: auto;
+  }
 }
