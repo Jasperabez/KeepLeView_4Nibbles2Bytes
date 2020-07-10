@@ -8,13 +8,20 @@ import { User } from '@/models';
   providedIn: 'root',
 })
 export class AuthenticationService {
-  currentUser: User;
+  currentUser;
+  // id: string;
+  id = 'd823b0ff-0b2b-4bbf-9c93-3ec7826657de';
 
   constructor() {}
+
+  getId(): string {
+    return 'V-' + this.id;
+  }
 
   async login(username: string, password: string): Promise<boolean> {
     try {
       this.currentUser = await Auth.signIn(username, password);
+      this.id = this.currentUser.pool.clientId;
       return true;
     } catch (error) {
       console.log('error signing in', error);

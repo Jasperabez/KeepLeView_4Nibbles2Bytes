@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 <<<<<<< HEAD
 import { HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { Quest, Beneficiary } from '@/models';
 
-import { mockQuests } from '@/helpers';
-import { Quest } from '@/models';
+import { AuthenticationService, UserService } from '@/services';
 
 const apiUrl = 'https://1bdbj7hjli.execute-api.us-east-1.amazonaws.com/dev/';
 =======
@@ -17,8 +15,13 @@ import { mockQuests } from '@/helpers';
   providedIn: 'root',
 })
 export class QuestService {
-  quests = [];
+  constructor(
+    private http: HttpClient,
+    private authService: AuthenticationService,
+    private userService: UserService
+  ) {}
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   constructor(private http: HttpClient) {
 =======
@@ -29,12 +32,24 @@ export class QuestService {
 
   getById(id: string) {
 <<<<<<< HEAD
+=======
+  async getById(id: string) {
+>>>>>>> Added Beneficiary service
     const getByIdUrl = `${apiUrl}mission/${id}?formatting=detailed`;
-    return this.http.get<Quest>(getByIdUrl);
+
+    let quest = await this.http.get<Quest>(getByIdUrl).toPromise();
+    quest = await quest[0];
+    let user = await this.userService.getById(quest.BeneficiaryId).toPromise();
+    user = await user[0];
+
+    quest.lat = parseFloat(user.Latitude);
+    quest.lng = parseFloat(user.Longtitude);
+
+    return quest;
   }
 
   getAll() {
-    const getAllUrl = apiUrl + 'mission/allNotTaken';
+    const getAllUrl = `${apiUrl}mission/allNotTaken`;
     return this.http.get<Quest[]>(getAllUrl);
 =======
     return this.quests.filter((quest) => quest.id === id)[0];
@@ -45,11 +60,38 @@ export class QuestService {
 >>>>>>> Added more UI
   }
 
-  acceptMission(id: string) {
-    this.quests.forEach((quest) => {
-      if (quest.id === id) {
-        quest.isTaken = true;
-      }
+  acceptMission(missionId: string) {
+    const acceptMissionUrl = `${apiUrl}mission/${missionId}`;
+
+    const response = {
+      statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'OPTIONS,POST,GET',
+      },
+      body: {
+        VolunteerId: this.authService.getId(),
+        PatchType: 'AcceptMission',
+      },
+    };
+
+    const header = {
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'OPTIONS,POST,GET',
+    };
+
+    console.log(this.authService.getId());
+
+    const body = {
+      VolunteerId: this.authService.getId(),
+      PatchType: 'AcceptMission',
+    };
+
+    return this.http.patch(acceptMissionUrl, {
+      VolunteerId: this.authService.getId(),
+      PatchType: 'AcceptMission',
     });
   }
 }

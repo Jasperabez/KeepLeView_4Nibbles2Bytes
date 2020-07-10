@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { QuestService } from '@/services';
+import { QuestService, UserService } from '@/services';
 
 import { Quest } from '@/models';
 
@@ -22,7 +22,14 @@ export class QuestComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.router.snapshot.params.id;
+<<<<<<< HEAD
     this.quest = this.questService.getById(this.id);
+=======
+
+    this.questService.getById(this.id).then((quest) => {
+      this.quest = quest;
+    });
+>>>>>>> Added Beneficiary service
   }
 
   goBack(): void {
@@ -30,6 +37,8 @@ export class QuestComponent implements OnInit {
   }
 
   acceptMission(id: string): void {
-    this.questService.acceptMission(id);
+    this.questService.acceptMission(id).subscribe((response) => {
+      console.log(response);
+    });
   }
 }

@@ -43,7 +43,7 @@ export class MapComponent implements AfterViewInit {
         iconSize: [30, 30],
         iconAnchor: [15, 0],
         // specify the path here
-        iconUrl: 'assets/marker.webp',
+        iconUrl: 'assets/common/marker.webp',
       }),
     };
 
