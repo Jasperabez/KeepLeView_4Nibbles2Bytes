@@ -1,0 +1,31 @@
+<div class="menu">
+	<p class="menu-btn" (click)="goBack()">
+		Back
+	</p>
+	<div class="spacer"></div>
+	<p class="menu-btn">Accept</p>
+</div>
+<hr />
+<div *ngIf="quest">
+	<app-map [lat]="quest.lat" [lng]="quest.lng"></app-map>
+<<<<<<< HEAD
+	<h3>{{ quest.ConciseLocation }}</h3>
+	<p>Request Time: {{ quest.RequestUnixTime | date }}</p>
+	<p>Beneficiaries id: {{ quest.BeneficiaryId }}</p>
+	<p>Food: {{ quest.FoodName }}</p>
+	<button
+		[disabled]="quest.IsTaken"
+		(click)="acceptMission(quest.MissionId)"
+=======
+	<h3>{{ quest.location }}</h3>
+	<p>Beneficiaries id: {{ quest.beneficiariesId }}</p>
+	<p>Volunteer id: {{ quest.volunteerId }}</p>
+	<button
+		[disabled]="quest.isTaken"
+		(click)="acceptMission(quest.id)"
+>>>>>>> Added more UI
+		class="acceptBtn"
+	>
+		Accept
+	</button>
+</div>
