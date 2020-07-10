@@ -20,14 +20,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.authenticationService.currentUser;
-<<<<<<< HEAD
-    this.questService.getAll().subscribe((questList) => {
-      console.log(questList);
-      this.quests = questList;
+    this.questService.getAll().subscribe((quests) => {
+      this.quests = quests;
     });
-=======
-    this.missions = this.questService.getAll();
->>>>>>> Added more UI
   }
 
   onSignOut(): void {
