@@ -9,11 +9,11 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { MissionComponent } from './mission/mission.component';
 
-import { AmplifyUIAngularModule } from '@aws-amplify/ui-angular';
-import Amplify, { Auth } from 'aws-amplify';
+import Amplify from 'aws-amplify';
 import awsconfig from './aws-exports';
 import { MapComponent } from './map/map.component';
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 Amplify.configure({
   aws_project_region: 'us-east-1',
@@ -31,6 +31,9 @@ Amplify.configure({
 //   "oauth": {}
 // });
 >>>>>>> commented amplify bug
+=======
+Amplify.configure(awsconfig);
+>>>>>>> 769434c4ef9377251e006bc048533462ef3d9e5e
 
 @NgModule({
   declarations: [
