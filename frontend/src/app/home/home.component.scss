@@ -1,0 +1,38 @@
+.main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  .menuHolder {
+    flex: 0 0;
+    .menu {
+      display: flex;
+      align-items: center;
+    }
+
+    .menu-btn {
+      padding: 8px;
+      margin: 0;
+      font-size: 1.2rem;
+      color: grey;
+    }
+
+    .menu-btn--active {
+      color: black;
+    }
+
+    .menu-icon {
+      width: 24px;
+      height: 24px;
+      padding: 8px;
+    }
+  }
+
+  .questHolder {
+    flex: 1 1;
+    overflow-y: auto;
+  }
+}

@@ -1,0 +1,44 @@
+<div class="menu">
+	<p class="menu-btn" (click)="goBack()">
+		Back
+	</p>
+	<div class="spacer"></div>
+	<p
+		class="menu-btn"
+		*ngIf="quest.VolunteerId !== userId"
+		(click)="acceptMission(quest.MissionId)"
+	>
+		Accept
+	</p>
+	<p
+		class="menu-btn"
+		*ngIf="quest.VolunteerId === userId"
+		(click)="completeMission(quest.MissionId)"
+	>
+		Complete
+	</p>
+</div>
+<hr />
+<div class="loading" [class.loading--active]="!isLoading">Loading...</div>
+<div *ngIf="quest">
+	<app-map [lat]="quest.lat" [lng]="quest.lng"></app-map>
+	<h3>{{ quest.ConciseLocation }}</h3>
+	<p>Request Time: {{ quest.RequestUnixTime | date }}</p>
+	<p>Beneficiaries id: {{ quest.BeneficiaryId }}</p>
+	<p>Food: {{ quest.FoodName }}</p>
+	<button
+		[disabled]="quest.IsTaken"
+		(click)="acceptMission(quest.MissionId)"
+		class="acceptBtn"
+	>
+		Accept
+	</button>
+	<button
+		[hidden]="quest.VolunteerId !== userId"
+		[disabled]="quest.IsCompleted"
+		(click)="completeMission(quest.MissionId)"
+		class="acceptBtn"
+	>
+		Complete Mission
+	</button>
+</div>
