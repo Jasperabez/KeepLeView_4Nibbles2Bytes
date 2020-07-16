@@ -5,12 +5,17 @@
 </div>
 <hr />
 <div class="loading" [class.loading--active]="!isLoading">Loading...</div>
-<div class="popup-holder">
+<div class="popup-holder" *ngIf="isPopupHolder">
 	<app-popup-message
-		[hidden]="isPopupHidden"
+		*ngIf="isPopup"
 		[messageType]="messageType"
+		(done)="hidePopupHolder()"
 	></app-popup-message>
-	<app-popup-list></app-popup-list>
+	<app-popup-list
+		[hidden]="isListHidden"
+		[isLogItem]="isLogItem"
+		(completed)="goToFinal($event)"
+	></app-popup-list>
 </div>
 <div *ngIf="quest">
 	<app-map
@@ -24,23 +29,28 @@
 	<p>Beneficiaries id: {{ quest.BeneficiaryId }}</p>
 	<p>Food: {{ quest.FoodName }}</p>
 	<button
-		[hidden]="quest.VolunteerId !== userId"
+		[hidden]="isCompleteButtonHidden"
 		[disabled]="quest.IsCompleted"
 		(click)="completeMission(quest.MissionId)"
 		class="acceptBtn"
 	>
 		Complete Mission
 	</button>
-	<button class="acceptBtn">
+	<button
+		class="acceptBtn"
+		(click)="goToTransaction()"
+		[hidden]="isLocationReachButtonHidden"
+	>
 		I'm here!
 	</button>
-	<button class="acceptBtn">
+	<button
+		class="acceptBtn"
+		(click)="startTransaction()"
+		[hidden]="isActionButtonHidden || !isLogItem"
+	>
 		Add Items
 	</button>
-	<button class="acceptBtn">
+	<button class="acceptBtn" [hidden]="isActionButtonHidden || isLogItem">
 		Item List
-	</button>
-	<button class="acceptBtn">
-		Complete Mission
 	</button>
 </div>

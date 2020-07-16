@@ -1,6 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
-
-import { Item } from '@/models';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-popup-list',
@@ -8,8 +6,8 @@ import { Item } from '@/models';
   styleUrls: ['./popup-list.component.scss'],
 })
 export class PopupListComponent implements OnInit {
-  @Input() isLogItem = false;
-  @Input() isHidden = false;
+  @Input() isLogItem = true;
+  @Output() completed = new EventEmitter<void>();
 
   items = [
     { no: 1, name: 'White Rice', quantity: 5, measurement: 'kg' },
@@ -75,6 +73,6 @@ export class PopupListComponent implements OnInit {
   }
 
   closeList(): void {
-    this.isHidden = true;
+    this.completed.emit();
   }
 }

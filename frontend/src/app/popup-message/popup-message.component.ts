@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-popup-message',
@@ -7,7 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class PopupMessageComponent implements OnInit {
   @Input() messageType: string;
-  isDisplay: boolean;
+  @Output() done = new EventEmitter<void>();
+
   header: string;
   message: string;
   iconURL: string;
@@ -37,5 +38,9 @@ export class PopupMessageComponent implements OnInit {
     this.header = 'Transaction Complete!';
     this.message = "You're halfway there, push through!";
     this.iconURL = '/assets/common/success.svg';
+  }
+
+  userDone(): void {
+    this.done.emit();
   }
 }
