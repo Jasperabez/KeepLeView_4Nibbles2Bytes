@@ -1,0 +1,28 @@
+.popup-msg {
+  min-width: 400px;
+  min-height: 400px;
+
+  width: 25vw;
+  height: 25vw;
+
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(6px);
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 16px;
+
+  .popup-msg__icon {
+    width: 100px;
+    margin: 16px;
+  }
+
+  .popup-msg__msg {
+    margin: 4px;
+    text-align: center;
+  }
+}
