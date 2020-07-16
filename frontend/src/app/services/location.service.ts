@@ -10,7 +10,7 @@ export class LocationService {
 
   constructor() {}
 
-  getPosition(options?): Coords {
+  getPosition(options?): Promise<any> {
     return new Promise((res, rej) => {
       navigator.geolocation.getCurrentPosition(res, rej, options);
     });
