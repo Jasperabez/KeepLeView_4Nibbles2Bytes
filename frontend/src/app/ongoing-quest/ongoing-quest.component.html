@@ -2,14 +2,6 @@
 	<p class="menu-btn" (click)="goBack()">
 		Back
 	</p>
-	<div class="spacer"></div>
-	<p
-		class="menu-btn"
-		*ngIf="quest.VolunteerId === userId"
-		(click)="completeMission(quest.MissionId)"
-	>
-		Complete
-	</p>
 </div>
 <hr />
 <div class="loading" [class.loading--active]="!isLoading">Loading...</div>

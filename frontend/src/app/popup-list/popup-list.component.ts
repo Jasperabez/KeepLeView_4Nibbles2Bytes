@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { Item } from '@/models';
 
@@ -8,12 +8,53 @@ import { Item } from '@/models';
   styleUrls: ['./popup-list.component.scss'],
 })
 export class PopupListComponent implements OnInit {
-  items: Item[];
+  @Input() isLogItem = false;
+  @Input() isHidden = false;
+
+  items = [
+    { no: 1, name: 'White Rice', quantity: 5, measurement: 'kg' },
+    { no: 2, name: 'Bread', quantity: 2, measurement: 'loaves' },
+    { no: 3, name: 'Oatmeal', quantity: 2, measurement: 'bag' },
+    { no: 4, name: 'Egg', quantity: 1, measurement: 'dozen' },
+  ];
+
+  title = 'Item list';
+  itemButtonLabel = 'Tick';
 
   constructor() {}
 
   ngOnInit(): void {
-    this.items = [{ no: 1, name: 'Food', quantity: 5, measurement: 'kg' }];
+    this.setListByIsLog();
+  }
+
+  setListByIsLog(): void {
+    if (this.isLogItem) {
+      this.setAsLogItem();
+    }
+  }
+
+  setAsLogItem(): void {
+    this.isLogItem = true;
+    this.title = 'Log items';
+    this.itemButtonLabel = 'Remove';
+    this.items = [];
+  }
+
+  removeFromList(no: number): void {
+    this.items = this.items.filter((item) => item.no !== no);
+    this.updateListNo();
+
+    if (!this.isLogItem && this.items.length === 0) {
+      this.closeList();
+    }
+  }
+
+  updateListNo(): void {
+    let index = 1;
+    this.items.forEach((item) => {
+      item.no = index;
+      index++;
+    });
   }
 
   addItem(
@@ -31,5 +72,9 @@ export class PopupListComponent implements OnInit {
     name.value = '';
     quantity.value = '';
     measurement.value = '';
+  }
+
+  closeList(): void {
+    this.isHidden = true;
   }
 }

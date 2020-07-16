@@ -1,5 +1,5 @@
-<div class="list-holder">
-	<h2>Log items</h2>
+<div class="list-holder" [hidden]="isHidden">
+	<h2>{{ title }}</h2>
 	<table class="item-table">
 		<tr>
 			<th>No.</th>
@@ -12,9 +12,13 @@
 			<td class="name-holder">{{ item.name }}</td>
 			<td>{{ item.quantity }}</td>
 			<td>{{ item.measurement }}</td>
-			<td><button>Remove</button></td>
+			<td>
+				<button (click)="removeFromList(item.no)">
+					{{ itemButtonLabel }}
+				</button>
+			</td>
 		</tr>
-		<tr>
+		<tr [hidden]="!isLogItem">
 			<td>{{ items.length + 1 }}</td>
 			<td>
 				<input
@@ -53,5 +57,5 @@
 			</td>
 		</tr>
 	</table>
-	<button>Complete</button>
+	<button [hidden]="!isLogItem" (click)="closeList()">Complete</button>
 </div>
