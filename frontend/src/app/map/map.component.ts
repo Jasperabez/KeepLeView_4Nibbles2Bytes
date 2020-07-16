@@ -9,6 +9,8 @@ import * as L from 'leaflet';
 export class MapComponent implements AfterViewInit {
   @Input() lat = 1.359375;
   @Input() lng = 1.359375;
+  @Input() userLat: number;
+  @Input() userLng: number;
 
   private map: L.map;
 
@@ -16,7 +18,8 @@ export class MapComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.initMap();
-    this.addMarker(this.lat, this.lng);
+    this.addDestinationMarker(this.lat, this.lng);
+    this.addUserMarker(this.userLat, this.userLng);
   }
 
   private initMap(): void {
@@ -37,13 +40,26 @@ export class MapComponent implements AfterViewInit {
     tiles.addTo(this.map);
   }
 
-  private addMarker(lat: number, lng: number): void {
+  private addDestinationMarker(lat: number, lng: number): void {
     const icon = {
       icon: L.icon({
         iconSize: [30, 30],
         iconAnchor: [15, 0],
         // specify the path here
         iconUrl: 'assets/common/marker.webp',
+      }),
+    };
+
+    L.marker([lat, lng], icon).addTo(this.map);
+  }
+
+  private addUserMarker(lat: number, lng: number): void {
+    const icon = {
+      icon: L.icon({
+        iconSize: [30, 30],
+        iconAnchor: [15, 15],
+        // specify the path here
+        iconUrl: 'assets/common/user_marker.png',
       }),
     };
 
