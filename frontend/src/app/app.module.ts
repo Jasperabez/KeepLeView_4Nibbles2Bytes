@@ -14,7 +14,7 @@ import Amplify from 'aws-amplify';
 import awsconfig from './aws-exports';
 import { MapComponent } from './map/map.component';
 import { DoorComponent } from './door/door.component';
-import { MyQuestComponent } from './my-quest/my-quest.component';
+import { OngoingQuestComponent } from './ongoing-quest/ongoing-quest.component';
 
 Amplify.configure(awsconfig);
 
@@ -27,7 +27,7 @@ Amplify.configure(awsconfig);
     QuestComponent,
     MapComponent,
     DoorComponent,
-    MyQuestComponent,
+    OngoingQuestComponent,
   ],
   imports: [
     BrowserModule,
