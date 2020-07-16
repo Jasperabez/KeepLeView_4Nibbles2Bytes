@@ -50,7 +50,11 @@
 	>
 		Add Items
 	</button>
-	<button class="acceptBtn" [hidden]="isActionButtonHidden || isLogItem">
+	<button
+		class="acceptBtn"
+		(click)="startTransaction()"
+		[hidden]="isActionButtonHidden || isLogItem"
+	>
 		Item List
 	</button>
 </div>
