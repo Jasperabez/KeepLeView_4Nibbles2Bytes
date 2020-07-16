@@ -21,7 +21,12 @@
 <hr />
 <div class="loading" [class.loading--active]="!isLoading">Loading...</div>
 <div *ngIf="quest">
-	<app-map [lat]="quest.lat" [lng]="quest.lng"></app-map>
+	<app-map
+		[lat]="quest.lat"
+		[lng]="quest.lng"
+		[userLat]="userLocation.lat"
+		[userLng]="userLocation.lng"
+	></app-map>
 	<h3>{{ quest.ConciseLocation }}</h3>
 	<p>Request Time: {{ quest.RequestUnixTime | date }}</p>
 	<p>Beneficiaries id: {{ quest.BeneficiaryId }}</p>
