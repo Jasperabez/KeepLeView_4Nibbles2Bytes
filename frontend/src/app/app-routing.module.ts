@@ -12,7 +12,7 @@ const routes: Routes = [
   // { path: 'home/:state', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'door/:state', component: DoorComponent },
   { path: 'quests/:id', component: QuestComponent },
-  { path: 'ongoing-quests/:id', component: OngoingQuestComponent },
+  { path: 'ongoing-quests/:type/:state/:id', component: OngoingQuestComponent },
   { path: '**', redirectTo: 'home/quests' },
 ];
 

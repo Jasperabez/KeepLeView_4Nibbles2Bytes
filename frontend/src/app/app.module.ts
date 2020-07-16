@@ -15,6 +15,8 @@ import awsconfig from './aws-exports';
 import { MapComponent } from './map/map.component';
 import { DoorComponent } from './door/door.component';
 import { OngoingQuestComponent } from './ongoing-quest/ongoing-quest.component';
+import { PopupMessageComponent } from './popup-message/popup-message.component';
+import { PopupListComponent } from './popup-list/popup-list.component';
 
 Amplify.configure(awsconfig);
 
@@ -28,6 +30,8 @@ Amplify.configure(awsconfig);
     MapComponent,
     DoorComponent,
     OngoingQuestComponent,
+    PopupMessageComponent,
+    PopupListComponent,
   ],
   imports: [
     BrowserModule,

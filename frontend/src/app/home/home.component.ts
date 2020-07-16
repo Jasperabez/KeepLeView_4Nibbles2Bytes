@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
         this.questService.getByVolunteerId(this.userId).then((quests) => {
           this.quests = quests;
           this.isLoading = false;
-          this.questRouting = '/ongoing-quests/';
+          this.questRouting = '/ongoing-quests/delivery/pending/';
         });
       } else {
         this.questService.getAll().subscribe((quests) => {
