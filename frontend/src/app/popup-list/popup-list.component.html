@@ -1,0 +1,57 @@
+<div class="list-holder">
+	<h2>Log items</h2>
+	<table class="item-table">
+		<tr>
+			<th>No.</th>
+			<th>Item</th>
+			<th>Qty</th>
+			<th>Unit</th>
+		</tr>
+		<tr *ngFor="let item of items">
+			<td>{{ item.no }}</td>
+			<td class="name-holder">{{ item.name }}</td>
+			<td>{{ item.quantity }}</td>
+			<td>{{ item.measurement }}</td>
+			<td><button>Remove</button></td>
+		</tr>
+		<tr>
+			<td>{{ items.length + 1 }}</td>
+			<td>
+				<input
+					class="name-input"
+					#name
+					type="text"
+					placeholder="Name"
+					name=""
+					id=""
+				/>
+			</td>
+			<td>
+				<input
+					class="number-input"
+					#quantity
+					placeholder="00"
+					type="number"
+					name=""
+					id=""
+				/>
+			</td>
+			<td>
+				<input
+					class="unit-input"
+					placeholder="packs, etc."
+					#measurement
+					type="text"
+					name=""
+					id=""
+				/>
+			</td>
+			<td>
+				<button (click)="addItem(name, quantity, measurement)">
+					Add
+				</button>
+			</td>
+		</tr>
+	</table>
+	<button>Complete</button>
+</div>
