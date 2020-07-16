@@ -31,7 +31,7 @@
 	<div class="questHolder">
 		<div
 			*ngFor="let quest of quests"
-			routerLink="{{ '/quests/' + quest.MissionId }}"
+			routerLink="{{ questRouting + quest.MissionId }}"
 		>
 			<h2>{{ quest.ConciseLocation }}</h2>
 			<p>{{ quest.MissionType }}</p>
