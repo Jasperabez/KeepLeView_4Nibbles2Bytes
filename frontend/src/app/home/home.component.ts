@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { User } from '@/models';
+import { Quest } from '@/models';
 
 import { AuthenticationService, QuestService } from '@/services';
 
@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   userId: string;
 
   isLoading: boolean;
-  questRouting: string;
+  questRouting: (arg0: Quest) => void;
 
   constructor(
     private authService: AuthenticationService,
@@ -35,16 +35,44 @@ export class HomeComponent implements OnInit {
         this.questService.getByVolunteerId(this.userId).then((quests) => {
           this.quests = quests;
           this.isLoading = false;
-          this.questRouting = '/ongoing-quests/delivery/pending/';
+          this.questRouting = this.gotoUserQuest;
         });
       } else {
         this.questService.getAll().subscribe((quests) => {
           this.quests = quests;
           this.isLoading = false;
-          this.questRouting = '/quests/';
+          this.questRouting = this.gotoQuest;
         });
       }
     });
+  }
+
+  gotoQuest(quest: Quest) {
+    this.router.navigate([`/quests/${quest.MissionId}`]);
+  }
+
+  gotoUserQuest(quest: Quest) {
+    const missionType = quest.MissionType;
+    const isCompleted = quest.IsCompleted;
+
+    let type: string;
+    let state: string;
+
+    if (missionType.search('Deliver') > -1) {
+      type = 'delivery';
+    } else if (missionType.search('Donate') > -1) {
+      type = 'collection';
+    }
+
+    if (isCompleted) {
+      state = 'completed';
+    } else {
+      state = 'pending';
+    }
+
+    this.router.navigate([
+      `/ongoing-quests/${type}/${state}/${quest.MissionId}`,
+    ]);
   }
 
   onSignOut(): void {
