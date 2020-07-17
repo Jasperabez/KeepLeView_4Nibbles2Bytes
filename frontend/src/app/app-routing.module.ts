@@ -8,8 +8,8 @@ import { AuthGuard } from './helpers';
 import { DoorComponent } from './door/door.component';
 
 const routes: Routes = [
-  { path: 'home/:state', component: HomeComponent, canActivate: [] },
-  // { path: 'home/:state', component: HomeComponent, canActivate: [AuthGuard] },
+  // { path: 'home/:state', component: HomeComponent, canActivate: [] },
+  { path: 'home/:state', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'door/:state', component: DoorComponent },
   { path: 'quests/:id', component: QuestComponent },
   { path: 'ongoing-quests/:type/:state/:id', component: OngoingQuestComponent },
