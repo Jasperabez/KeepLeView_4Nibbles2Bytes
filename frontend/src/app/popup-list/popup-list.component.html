@@ -13,9 +13,12 @@
 			<td>{{ item.quantity }}</td>
 			<td>{{ item.measurement }}</td>
 			<td>
-				<button (click)="removeFromList(item.no)">
-					{{ itemButtonLabel }}
-				</button>
+				<img
+					(click)="removeFromList(item.no)"
+					src="{{ itemButtonLabel }}"
+					class="icon-btn"
+					alt=""
+				/>
 			</td>
 		</tr>
 		<tr [hidden]="!isLogItem">
@@ -51,11 +54,16 @@
 				/>
 			</td>
 			<td>
-				<button (click)="addItem(name, quantity, measurement)">
-					Add
-				</button>
+				<img
+					(click)="addItem(name, quantity, measurement)"
+					src="/assets/common/plus.png"
+					class="icon-btn"
+					alt=""
+				/>
 			</td>
 		</tr>
 	</table>
-	<button [hidden]="!isLogItem" (click)="closeList()">Complete</button>
+	<button [hidden]="!isLogItem" (click)="closeList()" class="btn-style">
+		Complete
+	</button>
 </div>

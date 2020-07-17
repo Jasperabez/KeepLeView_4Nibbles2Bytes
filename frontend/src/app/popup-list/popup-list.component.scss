@@ -1,5 +1,21 @@
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 .list-holder {
   text-align: center;
+
+  animation: fade-in 0.6s;
+  animation-timing-function: ease-out;
 
   .item-table {
     background-color: rgba(255, 255, 255, 0.6);
@@ -21,16 +37,62 @@
         outline: none;
         background-color: transparent;
         border-bottom: 2px solid grey;
+
+        @media (max-width: 720px) {
+          width: 40px;
+        }
       }
 
       .name-input {
-        width: 200px;
-        font-size: 1rem;
+        width: 250px;
+
+        @media (max-width: 720px) {
+          font-size: 0.8rem;
+          width: 60px;
+        }
+      }
+    }
+
+    .icon-btn {
+      height: 16px;
+      opacity: 0.6;
+      background-color: rgba(0, 0, 0, 0.4);
+      border-radius: 16px;
+      padding: 4px;
+
+      transition: opacity 0.3s;
+
+      &:hover,
+      &:active {
+        opacity: 1;
       }
     }
 
     .name-holder {
       text-align: left;
     }
+  }
+}
+
+.btn-style {
+  color: rgb(35, 95, 255);
+  outline: none;
+  margin-top: 8px;
+  padding: 8px;
+  border: 1px solid rgb(35, 95, 255);
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 16px;
+  backdrop-filter: blur(6px);
+
+  box-shadow: 0 0px 0px 0px rgb(207, 207, 207);
+
+  transition: box-shadow 0.2s;
+
+  &:hover {
+    box-shadow: 0 0px 4px 2px rgb(207, 207, 207);
+  }
+
+  &:active {
+    background-color: rgb(207, 205, 230);
   }
 }

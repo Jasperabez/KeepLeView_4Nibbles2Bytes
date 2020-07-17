@@ -17,7 +17,7 @@ export class PopupListComponent implements OnInit {
   ];
 
   title = 'Item list';
-  itemButtonLabel = 'Tick';
+  itemButtonLabel = '/assets/common/tick.png';
 
   constructor() {}
 
@@ -34,7 +34,7 @@ export class PopupListComponent implements OnInit {
   setAsLogItem(): void {
     this.isLogItem = true;
     this.title = 'Log items';
-    this.itemButtonLabel = 'Remove';
+    this.itemButtonLabel = '/assets/common/close.png';
     this.items = [];
   }
 

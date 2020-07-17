@@ -1,6 +1,19 @@
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 .popup-msg {
-  min-width: 400px;
-  min-height: 400px;
+  min-width: 350px;
+  min-height: 350px;
 
   width: 25vw;
   height: 25vw;
@@ -15,6 +28,9 @@
   align-items: center;
 
   border-radius: 16px;
+
+  animation: fade-in 0.6s;
+  animation-timing-function: ease-out;
 
   .popup-msg__icon {
     width: 100px;
