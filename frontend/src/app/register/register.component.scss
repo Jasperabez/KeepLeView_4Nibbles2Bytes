@@ -16,3 +16,24 @@
   width: 100%;
   height: 32px;
 }
+
+.btn-style {
+  color: rgb(35, 95, 255);
+  outline: none;
+  border: 1px solid rgb(35, 95, 255);
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 16px;
+  backdrop-filter: blur(6px);
+
+  box-shadow: 0 0px 0px 0px rgb(207, 207, 207);
+
+  transition: box-shadow 0.2s;
+
+  &:hover {
+    box-shadow: 0 0px 4px 2px rgb(207, 207, 207);
+  }
+
+  &:active {
+    background-color: rgb(207, 205, 230);
+  }
+}
