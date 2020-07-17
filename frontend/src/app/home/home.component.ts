@@ -25,26 +25,36 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = this.authService.getId();
-    this.getQuestsByActivatedRoute();
+    this.updateQuestByNavigationRoute();
   }
 
-  public getQuestsByActivatedRoute() {
+  updateQuestByNavigationRoute() {
     this.activatedRoute.params.subscribe((route) => {
-      this.isLoading = true;
-      if (route.state === 'my-quest') {
-        this.questService.getByVolunteerId(this.userId).then((quests) => {
-          this.quests = quests;
-          this.isLoading = false;
-          this.questRouting = this.gotoUserQuest;
-        });
-      } else {
-        this.questService.getAll().subscribe((quests) => {
-          this.quests = quests;
-          this.isLoading = false;
-          this.questRouting = this.gotoQuest;
-        });
-      }
+      this.getQuestsByActivatedRoute(route);
     });
+  }
+
+  public getQuestsByActivatedRoute(route) {
+    this.isLoading = true;
+    if (route.state === 'my-quest') {
+      this.questService.getByVolunteerId(this.userId).then((quests) => {
+        this.quests = quests;
+        this.isLoading = false;
+        this.questRouting = this.gotoUserQuest;
+      });
+    } else {
+      this.questService.getAll().subscribe((quests) => {
+        this.quests = quests;
+        this.isLoading = false;
+        this.questRouting = this.gotoQuest;
+      });
+    }
+  }
+
+  refreshQuest(): void {
+    this.quests = [];
+    const route = { state: this.activatedRoute.snapshot.params.state };
+    this.getQuestsByActivatedRoute(route);
   }
 
   gotoQuest(quest: Quest) {
