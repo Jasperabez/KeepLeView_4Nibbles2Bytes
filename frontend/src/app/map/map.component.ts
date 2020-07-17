@@ -12,20 +12,44 @@ export class MapComponent implements AfterViewInit {
   @Input() userLat: number;
   @Input() userLng: number;
 
+  private mapLat: number;
+  private mapLng: number;
+  private mapZoom: number;
+
   private map: L.map;
 
   constructor() {}
 
   ngAfterViewInit(): void {
+    this.calculateMapPosition();
     this.initMap();
     this.addDestinationMarker(this.lat, this.lng);
     this.addUserMarker(this.userLat, this.userLng);
   }
 
+  private calculateMapPosition(): void {
+    this.mapLat = (this.lat + this.userLat) / 2;
+    this.mapLng = (this.lng + this.userLng) / 2;
+
+    const distance = Math.sqrt(
+      Math.pow(this.mapLat - this.lat, 2) + Math.pow(this.mapLng - this.lng, 2)
+    );
+
+    if (distance < 0.05) {
+      this.mapZoom = 13;
+    } else if (distance < 0.06) {
+      this.mapZoom = 12;
+    } else {
+      this.mapZoom = 11;
+    }
+    console.log(distance);
+    console.log(this.mapZoom);
+  }
+
   private initMap(): void {
     this.map = L.map('map', {
-      center: [this.lat, this.lng],
-      zoom: 15,
+      center: [this.mapLat, this.mapLng],
+      zoom: this.mapZoom,
     });
 
     const tiles = L.tileLayer(
