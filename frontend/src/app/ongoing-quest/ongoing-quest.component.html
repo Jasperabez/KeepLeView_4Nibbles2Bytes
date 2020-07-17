@@ -14,7 +14,7 @@
 	<app-popup-list
 		[hidden]="isListHidden"
 		[isLogItem]="isLogItem"
-		(completed)="goToFinal($event)"
+		(completed)="goToFinal()"
 	></app-popup-list>
 </div>
 <div *ngIf="quest">
@@ -24,34 +24,38 @@
 		[userLat]="userLocation.lat"
 		[userLng]="userLocation.lng"
 	></app-map>
-	<h3>{{ quest.ConciseLocation }}</h3>
-	<p>Request Time: {{ quest.RequestUnixTime | date }}</p>
-	<p>Beneficiaries id: {{ quest.BeneficiaryId }}</p>
-	<p>Food: {{ quest.FoodName }}</p>
+	<div class="title-holder">
+		<h2>{{ quest.ConciseLocation }}</h2>
+		<p>|</p>
+		<p class="time">{{ quest.RequestUnixTime | date }}</p>
+	</div>
+	<div class="tag-holder">
+		<span class="tag" *ngFor="let tag of tagList">{{ tag }}</span>
+	</div>
 	<button
 		[hidden]="isCompleteButtonHidden"
 		[disabled]="quest.IsCompleted"
 		(click)="completeMission(quest.MissionId)"
-		class="acceptBtn"
+		class="acceptBtn btn-style"
 	>
 		Complete Mission
 	</button>
 	<button
-		class="acceptBtn"
+		class="acceptBtn btn-style"
 		(click)="goToTransaction()"
 		[hidden]="isLocationReachButtonHidden"
 	>
 		I'm here!
 	</button>
 	<button
-		class="acceptBtn"
+		class="acceptBtn btn-style"
 		(click)="startTransaction()"
 		[hidden]="isActionButtonHidden || !isLogItem"
 	>
 		Add Items
 	</button>
 	<button
-		class="acceptBtn"
+		class="acceptBtn btn-style"
 		(click)="startTransaction()"
 		[hidden]="isActionButtonHidden || isLogItem"
 	>

@@ -33,6 +33,8 @@ export class OngoingQuestComponent implements OnInit {
   type: string;
   state: string;
 
+  tagList: string[];
+
   constructor(
     private router: ActivatedRoute,
     private questService: QuestService,
@@ -40,7 +42,9 @@ export class OngoingQuestComponent implements OnInit {
     private authService: AuthenticationService,
     private locationService: LocationService,
     private routing: Router
-  ) {}
+  ) {
+    this.tagList = [];
+  }
 
   ngOnInit(): void {
     this.questId = this.router.snapshot.params.id;
@@ -49,13 +53,25 @@ export class OngoingQuestComponent implements OnInit {
 
     this.userId = this.authService.getId();
     this.questService.getById(this.questId).then((quest) => {
+      quest.RequestUnixTime = quest.RequestUnixTime * 1000;
       this.quest = quest;
+      this.parseMissionType();
       this.isLoading = false;
     });
     this.locationService.getPosition().then((location) => {
       this.userLocation = new Coords();
       this.userLocation.lat = location.coords.latitude;
       this.userLocation.lng = location.coords.longitude;
+    });
+  }
+
+  parseMissionType(): void {
+    const allTagList = ['Donate', 'Deliver', 'Help'];
+
+    allTagList.forEach((tag) => {
+      if (this.quest.MissionType.search(tag) > -1) {
+        this.tagList.push(tag);
+      }
     });
   }
 
