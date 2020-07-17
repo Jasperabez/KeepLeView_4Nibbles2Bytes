@@ -19,7 +19,7 @@
 			<img
 				class="menu-icon"
 				routerLink="/settings"
-				src="assets/common/gear.png"
+				src="assets/common/refresh.png"
 				alt=""
 			/>
 		</div>
@@ -29,9 +29,11 @@
 		<hr />
 	</div>
 	<div class="questHolder">
-		<div *ngFor="let quest of quests" (click)="questRouting(quest)">
-			<h2>{{ quest.ConciseLocation }}</h2>
-			<p>{{ quest.MissionType }}</p>
-		</div>
+		<app-list-item
+			*ngFor="let quest of quests"
+			(click)="questRouting(quest)"
+			[location]="quest.ConciseLocation"
+			[missionType]="quest.MissionType"
+		></app-list-item>
 	</div>
 </div>
