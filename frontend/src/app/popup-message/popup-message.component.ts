@@ -29,8 +29,7 @@ export class PopupMessageComponent implements OnInit {
 
   questCompleteMessage(): void {
     this.header = 'Quest Complete!';
-    this.message =
-      'Your action matters and we appreciate what you did today. Thank you.';
+    this.message = 'Your action matters, thank you.';
     this.iconURL = '/assets/common/party.png';
   }
 
