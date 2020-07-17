@@ -12,8 +12,71 @@
   margin: 0;
   font-size: 1.2rem;
   color: black;
+  background-color: rgba(191, 161, 212, 0.6);
+  backdrop-filter: blur(6px);
+  border-radius: 6px;
+  margin-right: 16px;
+
+  cursor: pointer;
+
+  outline: none;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: rgba(191, 161, 212, 0.8);
+  }
+
+  &:active {
+    background-color: rgba(191, 161, 212, 1);
+  }
+}
+
+.title-holder {
+  display: flex;
+  align-items: center;
+  p {
+    margin-left: 8px;
+  }
+
+  .time {
+    font-size: 0.8rem;
+    margin-top: 14px;
+  }
+}
+
+.tag {
+  background-color: #efae60;
+  padding: 4px;
+  font-size: 0.8rem;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+.tag-holder {
+  margin-bottom: 16px;
 }
 
 .acceptBtn {
   z-index: 5;
+}
+
+.btn-style {
+  color: rgb(35, 95, 255);
+  width: 100%;
+  padding: 10px 0;
+  outline: none;
+  border: 1px solid rgb(35, 95, 255);
+  border-radius: 16px;
+  backdrop-filter: blur(6px);
+
+  box-shadow: 0 0px 0px 0px rgb(207, 207, 207);
+
+  transition: box-shadow 0.2s;
+
+  &:hover {
+    box-shadow: 0 0px 4px 2px rgb(207, 207, 207);
+  }
+
+  &:active {
+    background-color: rgb(207, 205, 230);
+  }
 }

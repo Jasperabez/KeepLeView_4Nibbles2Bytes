@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 import {
@@ -21,25 +21,41 @@ export class QuestComponent implements OnInit {
   quest: Quest;
   userLocation: Coords;
   isLoading = true;
+  tagList: string[];
   constructor(
     private router: ActivatedRoute,
+    private routing: Router,
     private questService: QuestService,
     private location: Location,
     private authService: AuthenticationService,
     private locationService: LocationService
-  ) {}
+  ) {
+    this.tagList = [];
+  }
 
   ngOnInit(): void {
     this.questId = this.router.snapshot.params.id;
     this.userId = this.authService.getId();
     this.questService.getById(this.questId).then((quest) => {
+      quest.RequestUnixTime = quest.RequestUnixTime * 1000;
       this.quest = quest;
+      this.parseMissionType();
       this.isLoading = false;
     });
     this.locationService.getPosition().then((location) => {
       this.userLocation = new Coords();
       this.userLocation.lat = location.coords.latitude;
       this.userLocation.lng = location.coords.longitude;
+    });
+  }
+
+  parseMissionType(): void {
+    const allTagList = ['Donate', 'Deliver', 'Help'];
+
+    allTagList.forEach((tag) => {
+      if (this.quest.MissionType.search(tag) > -1) {
+        this.tagList.push(tag);
+      }
     });
   }
 
@@ -52,14 +68,7 @@ export class QuestComponent implements OnInit {
     this.questService.acceptMission(id).subscribe((response) => {
       console.log(response);
       this.isLoading = false;
-    });
-  }
-
-  completeMission(id: string): void {
-    this.isLoading = true;
-    this.questService.completeMission(id).subscribe((response) => {
-      console.log(response);
-      this.isLoading = false;
+      this.routing.navigate(['/home/my-quest']);
     });
   }
 }
