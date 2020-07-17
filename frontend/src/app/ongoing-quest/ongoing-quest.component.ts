@@ -22,10 +22,13 @@ export class OngoingQuestComponent implements OnInit {
   userLocation: Coords;
   isLoading = true;
   messageType: string;
-  isPopup = false;
+
   isListHidden = true;
   isLogItem = false;
+
   isPopupHolder = false;
+  isPopup = false;
+
   isActionButtonHidden = true;
   isLocationReachButtonHidden = true;
   isCompleteButtonHidden = true;
