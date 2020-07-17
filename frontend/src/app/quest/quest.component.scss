@@ -11,8 +11,9 @@
   padding: 8px;
   margin: 0;
   font-size: 1.2rem;
-  color: black;
-  background-color: rgba(191, 161, 212, 0.6);
+  color: rgb(0, 0, 0);
+  background-color: transparent;
+  border: 2px solid rgba(191, 161, 212, 0.6);
   backdrop-filter: blur(6px);
   border-radius: 6px;
   margin-right: 16px;
@@ -21,6 +22,21 @@
 
   outline: none;
   transition: background-color 0.3s;
+
+  .menu-btn-icon {
+    height: 16px;
+    margin-right: 4px;
+
+    transition: transform 0.3s;
+  }
+
+  &:hover .menu-btn-icon {
+    transform: translateX(-3px);
+  }
+
+  &:active .menu-btn-icon {
+    transform: translateX(-3px);
+  }
 
   &:hover {
     background-color: rgba(191, 161, 212, 0.8);
@@ -57,26 +73,4 @@
 
 .acceptBtn {
   z-index: 5;
-}
-
-.btn-style {
-  color: rgb(35, 95, 255);
-  width: 100%;
-  padding: 10px 0;
-  outline: none;
-  border: 1px solid rgb(35, 95, 255);
-  border-radius: 16px;
-  backdrop-filter: blur(6px);
-
-  box-shadow: 0 0px 0px 0px rgb(207, 207, 207);
-
-  transition: box-shadow 0.2s;
-
-  &:hover {
-    box-shadow: 0 0px 4px 2px rgb(207, 207, 207);
-  }
-
-  &:active {
-    background-color: rgb(207, 205, 230);
-  }
 }

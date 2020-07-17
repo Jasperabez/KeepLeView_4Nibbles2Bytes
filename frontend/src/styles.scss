@@ -42,3 +42,41 @@ button {
 .loading--active {
   opacity: 0;
 }
+
+.btn-style {
+  color: black;
+  width: 100%;
+  padding: 10px 0;
+  outline: none;
+  border: none;
+  font-weight: bold;
+  border-radius: 16px;
+  backdrop-filter: blur(6px);
+
+  font-size: 1rem;
+
+  background-color: rgba(191, 161, 212, 0.6);
+
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: rgba(191, 161, 212, 0.8);
+  }
+
+  &:active {
+    background-color: rgba(191, 161, 212, 1);
+  }
+
+  &:disabled {
+    color: grey;
+    background-color: rgba(191, 161, 212, 0.5);
+
+    &:hover {
+      background-color: rgba(191, 161, 212, 0.5);
+    }
+
+    &:active {
+      background-color: rgba(191, 161, 212, 0.5);
+    }
+  }
+}
