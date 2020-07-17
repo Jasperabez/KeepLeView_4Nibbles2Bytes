@@ -26,6 +26,7 @@ export class QuestService {
 
     quest.lat = parseFloat(user.Latitude);
     quest.lng = parseFloat(user.Longtitude);
+    quest.Address = user.Address;
 
     return quest;
   }

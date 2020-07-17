@@ -5,6 +5,7 @@ export class Quest {
   VolunteerId: string;
   BeneficiaryId: string;
   ConciseLocation: string;
+  Address: string;
   AcceptUnixTime: string;
   IsCompleted: true;
   MissionId: string;

@@ -25,9 +25,12 @@
 		[userLng]="userLocation.lng"
 	></app-map>
 	<div class="title-holder">
-		<h2>{{ quest.ConciseLocation }}</h2>
-		<p>|</p>
-		<p class="time">{{ quest.RequestUnixTime | date }}</p>
+		<div class="place-holder">
+			<h2 class="concise-location">{{ quest.ConciseLocation }}</h2>
+			<p class="address">
+				{{ quest.Address }} | {{ quest.RequestUnixTime | date }}
+			</p>
+		</div>
 	</div>
 	<div class="tag-holder">
 		<span class="tag" *ngFor="let tag of tagList">{{ tag }}</span>
