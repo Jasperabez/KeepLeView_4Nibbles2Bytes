@@ -38,8 +38,6 @@
     background-color: transparent;
     margin: 0px;
 
-    margin-bottom: -16px;
-
     .logo {
       height: 70px;
       width: auto;
@@ -65,6 +63,7 @@
 
   @media (max-width: 720px) {
     padding: 16px;
+    margin: 8px;
   }
 }
 
