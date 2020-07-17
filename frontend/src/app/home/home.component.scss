@@ -37,6 +37,9 @@
       outline: none;
       transition: background-color 0.3s;
 
+      display: flex;
+      align-items: center;
+
       &:hover {
         background-color: rgba(191, 161, 212, 0.8);
       }
@@ -63,6 +66,16 @@
       &:hover {
         transform: rotate(70deg);
       }
+    }
+
+    .menu-icon-small {
+      height: 16px;
+      margin-right: 8px;
+      opacity: 0.5;
+    }
+
+    .menu-icon-small--active {
+      opacity: 1;
     }
   }
 

@@ -6,6 +6,12 @@
 				routerLink="/home/quests"
 				routerLinkActive="menu-btn--active"
 			>
+				<img
+					src="/assets/common/quest.png"
+					class="menu-icon-small"
+					routerLinkActive="menu-icon-small--active"
+					alt=""
+				/>
 				Quest List
 			</p>
 			<p
@@ -13,7 +19,13 @@
 				routerLink="/home/my-quest"
 				routerLinkActive="menu-btn--active"
 			>
-				Current Quest
+				<img
+					src="/assets/common/user.png"
+					class="menu-icon-small"
+					routerLinkActive="menu-icon-small--active"
+					alt=""
+				/>
+				My Quest
 			</p>
 			<div class="spacer"></div>
 			<img
@@ -33,6 +45,7 @@
 			*ngFor="let quest of quests"
 			(click)="questRouting(quest)"
 			[location]="quest.ConciseLocation"
+			[id]="quest.MissionId"
 			[missionType]="quest.MissionType"
 		></app-list-item>
 	</div>
