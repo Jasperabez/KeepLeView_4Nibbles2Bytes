@@ -7,10 +7,12 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ListItemComponent implements OnInit {
   @Input() missionType: string;
-  @Input() time;
   @Input() location: string;
+  @Input() id: string;
 
   tagList: string[];
+
+  imgURL: string;
 
   constructor() {
     this.tagList = [];
@@ -18,6 +20,7 @@ export class ListItemComponent implements OnInit {
 
   ngOnInit(): void {
     this.parseMissionType();
+    this.parseId();
   }
 
   parseMissionType(): void {
@@ -28,5 +31,15 @@ export class ListItemComponent implements OnInit {
         this.tagList.push(tag);
       }
     });
+
+    if (this.missionType.search('Deliver') > -1) {
+      this.imgURL = '/assets/common/mover-truck.png';
+    } else if (this.missionType.search('Donate') > -1) {
+      this.imgURL = '/assets/common/heart.png';
+    }
+  }
+
+  parseId(): void {
+    this.id = this.id.substr(this.id.length - 5, this.id.length);
   }
 }

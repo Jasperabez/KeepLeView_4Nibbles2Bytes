@@ -1,4 +1,11 @@
 <div class="holder" data-delay="5">
-	<h2 class="title">{{ location }}</h2>
-	<span class="tag" *ngFor="let tag of tagList">{{ tag }}</span>
+	<div class="info-holder">
+		<h2 class="title">
+			{{ location }}
+			<span class="id">{{ id }}</span>
+		</h2>
+		<span class="tag" *ngFor="let tag of tagList">{{ tag }}</span>
+	</div>
+	<div class="spacer"></div>
+	<img src="{{ imgURL }}" class="img" alt="" />
 </div>

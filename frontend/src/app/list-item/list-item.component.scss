@@ -9,11 +9,23 @@
   cursor: pointer;
 
   transition: transform 0.3s;
+  display: flex;
+  align-items: center;
+
+  .img {
+    height: 50px;
+    margin-left: 32px;
+  }
 
   .title {
     margin: 4px 0;
     padding: 0;
     margin-bottom: 16px;
+
+    .id {
+      font-size: 0.8rem;
+      font-weight: normal;
+    }
   }
 
   .tag {
