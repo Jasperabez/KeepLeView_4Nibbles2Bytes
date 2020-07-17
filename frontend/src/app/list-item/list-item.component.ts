@@ -17,6 +17,10 @@ export class ListItemComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.parseMissionType();
+  }
+
+  parseMissionType(): void {
     const allTagList = ['Donate', 'Deliver', 'Help'];
 
     allTagList.forEach((tag) => {
