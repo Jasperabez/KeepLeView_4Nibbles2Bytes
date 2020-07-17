@@ -3,6 +3,12 @@
   height: 100vh;
   position: relative;
 
+  background: linear-gradient(
+    90deg,
+    rgba(191, 161, 212, 0.6) 0%,
+    rgba(239, 174, 96, 0.6) 100%
+  );
+
   display: grid;
   grid-template-columns: 1fr 1fr;
 
@@ -17,7 +23,6 @@
   align-items: center;
   justify-content: center;
   margin: 32px;
-  background-color: rgba(35, 95, 255, 0.2);
 
   flex: 1 1;
 
@@ -36,8 +41,9 @@
     margin-bottom: -16px;
 
     .logo {
-      height: 120px;
+      height: 70px;
       width: auto;
+      margin-top: 16px;
       padding: 0;
       box-sizing: border-box;
     }
@@ -52,6 +58,11 @@
   position: relative;
   overflow: hidden;
 
+  margin: 32px;
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(6px);
+  border-radius: 16px;
+
   @media (max-width: 720px) {
     padding: 16px;
   }
@@ -62,8 +73,8 @@
   width: 100%;
   height: 100%;
 
-  filter: blur(12px);
-  -webkit-filter: blur(12px);
+  filter: blur(6px);
+  opacity: 0.6;
 
   position: absolute;
   background-size: cover;

@@ -17,6 +17,7 @@ import { DoorComponent } from './door/door.component';
 import { OngoingQuestComponent } from './ongoing-quest/ongoing-quest.component';
 import { PopupMessageComponent } from './popup-message/popup-message.component';
 import { PopupListComponent } from './popup-list/popup-list.component';
+import { ListItemComponent } from './list-item/list-item.component';
 
 Amplify.configure(awsconfig);
 
@@ -32,6 +33,7 @@ Amplify.configure(awsconfig);
     OngoingQuestComponent,
     PopupMessageComponent,
     PopupListComponent,
+    ListItemComponent,
   ],
   imports: [
     BrowserModule,
