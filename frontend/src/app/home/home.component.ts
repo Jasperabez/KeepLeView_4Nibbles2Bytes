@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+
 import { Quest } from '@/models';
 
 import { AuthenticationService, QuestService } from '@/services';
@@ -37,17 +38,31 @@ export class HomeComponent implements OnInit {
   public getQuestsByActivatedRoute(route) {
     this.isLoading = true;
     if (route.state === 'my-quest') {
-      this.questService.getByVolunteerId(this.userId).then((quests) => {
-        this.quests = quests;
-        this.isLoading = false;
-        this.questRouting = this.gotoUserQuest;
-      });
+      this.questService.getByVolunteerId(this.userId).then(
+        (quests) => {
+          this.quests = quests;
+          this.isLoading = false;
+          this.questRouting = this.gotoUserQuest;
+        },
+        (err) => {
+          this.quests = [];
+          console.log(err);
+          this.isLoading = false;
+        }
+      );
     } else {
-      this.questService.getAll().subscribe((quests) => {
-        this.quests = quests;
-        this.isLoading = false;
-        this.questRouting = this.gotoQuest;
-      });
+      this.questService.getAll().subscribe(
+        (quests) => {
+          this.quests = quests;
+          this.isLoading = false;
+          this.questRouting = this.gotoQuest;
+        },
+        (err) => {
+          this.quests = [];
+          console.log(err);
+          this.isLoading = false;
+        }
+      );
     }
   }
 

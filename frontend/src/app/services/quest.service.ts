@@ -44,6 +44,10 @@ export class QuestService {
   acceptMission(missionId: string) {
     const acceptMissionUrl = `${apiUrl}mission/${missionId}`;
 
+    console.log(
+      `Volunteer Id:${this.authService.getId()} is accepting mission ${missionId}`
+    );
+
     return this.http.patch(acceptMissionUrl, {
       VolunteerId: this.authService.getId(),
       PatchType: 'AcceptMission',

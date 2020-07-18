@@ -153,12 +153,19 @@ export class OngoingQuestComponent implements OnInit {
 
   completeMission(id: string): void {
     this.isLoading = true;
-    this.questService.completeMission(id).subscribe((response) => {
-      console.log(response);
-      this.routing.navigate([
-        `/ongoing-quests/${this.type}/completed/${this.questId}`,
-      ]);
-      this.isLoading = false;
-    });
+    this.questService.completeMission(id).subscribe(
+      (response) => {
+        console.log(response);
+        this.routing.navigate([
+          `/ongoing-quests/${this.type}/completed/${this.questId}`,
+        ]);
+        this.isLoading = false;
+      },
+      (err) => {
+        console.log(err);
+        this.isLoading = false;
+        alert('Mission not completed (Probably some bug that we will not fix)');
+      }
+    );
   }
 }
