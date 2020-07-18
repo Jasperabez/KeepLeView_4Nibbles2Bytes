@@ -23,8 +23,8 @@ export class MapComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.calculateMapPosition();
     this.initMap();
-    this.addDestinationMarker(this.lat, this.lng);
     this.addUserMarker(this.userLat, this.userLng);
+    this.addDestinationMarker(this.lat, this.lng);
   }
 
   private calculateMapPosition(): void {
@@ -68,7 +68,7 @@ export class MapComponent implements AfterViewInit {
     const icon = {
       icon: L.icon({
         iconSize: [30, 30],
-        iconAnchor: [15, 0],
+        iconAnchor: [15, 30],
         // specify the path here
         iconUrl: 'assets/common/marker.webp',
       }),
