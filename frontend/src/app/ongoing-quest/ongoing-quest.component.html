@@ -24,9 +24,17 @@
 		[lng]="quest.lng"
 		[userLat]="userLocation.lat"
 		[userLng]="userLocation.lng"
+		*ngIf="!isSimulatePosition"
+	></app-map>
+	<app-map
+		[lat]="quest.lat"
+		[lng]="quest.lng"
+		[userLat]="quest.lat"
+		[userLng]="quest.lng"
+		*ngIf="isSimulatePosition"
 	></app-map>
 	<div class="title-holder">
-		<div class="place-holder">
+		<div class="place-holder" (click)="toggleSimulatePosition()">
 			<h2 class="concise-location">{{ quest.ConciseLocation }}</h2>
 			<p class="address">
 				{{ quest.Address }} | {{ quest.RequestUnixTime | date }}

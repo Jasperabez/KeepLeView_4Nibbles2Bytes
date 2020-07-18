@@ -33,6 +33,8 @@ export class OngoingQuestComponent implements OnInit {
   isLocationReachButtonHidden = true;
   isCompleteButtonHidden = true;
 
+  isSimulatePosition = false;
+
   type: string;
   state: string;
 
@@ -124,6 +126,10 @@ export class OngoingQuestComponent implements OnInit {
         });
       }
     });
+  }
+
+  toggleSimulatePosition(): void {
+    this.isSimulatePosition = !this.isSimulatePosition;
   }
 
   goBack(): void {
